@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class CocinaDomotica {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        boolean hornoEncendido = false;
+        int temperaturaHorno = 0;
+        boolean luzEncendida = false;
+        boolean extractorEncendido = false;
+        boolean cocinaEncendida = false;
+        int potenciaCocina = 0;
+
+        while (true) {
+            System.out.println("== COCINA DOMÓTICA ==");
+            System.out.println("1. Encender/apagar horno");
+            System.out.println("2. Regular temperatura horno");
+            System.out.println("3. Encender/apagar luz");
+            System.out.println("4. Encender/apagar extractor");
+            System.out.println("5. Encender/apagar cocina");
+            System.out.println("6. Regular potencia cocina");
+            System.out.println("0. Salir");
+            System.out.println("=====================");
+            System.out.print("Ingrese una opción: ");
+            int opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    hornoEncendido = !hornoEncendido;
+                    System.out.println("Horno " + (hornoEncendido ? "encendido" : "apagado"));
+                    break;
+                case 2:
+                    if (hornoEncendido) {
+                        System.out.print("Ingrese la temperatura del horno (en grados Celsius): ");
+                        temperaturaHorno = sc.nextInt();
+                        System.out.println("Temperatura del horno ajustada a " + temperaturaHorno + " grados Celsius");
+                    } else {
+                        System.out.println("El horno está apagado, no se puede ajustar la temperatura");
+                    }
+                    break;
+                case 3:
+                    luzEncendida = !luzEncendida;
+                    System.out.println("Luz " + (luzEncendida ? "encendida" : "apagada"));
+                    break;
+                case 4:
+                    extractorEncendido = !extractorEncendido;
+                    System.out.println("Extractor " + (extractorEncendido ? "encendido" : "apagado"));
+                    break;
+                case 5:
+                    cocinaEncendida = !cocinaEncendida;
+                    System.out.println("Cocina " + (cocinaEncendida ? "encendida" : "apagada"));
+                    break;
+                case 6:
+                    if (cocinaEncendida) {
+                        System.out.print("Ingrese la potencia de la cocina (en porcentaje): ");
+                        potenciaCocina = sc.nextInt();
+                        System.out.println("Potencia de la cocina ajustada a " + potenciaCocina + "%");
+                    } else {
+                        System.out.println("La cocina está apagada, no se puede ajustar la potencia");
+                    }
+                    break;
+                case 0:
+                    System.out.println("¡Hasta luego!");
+                    System.exit(0);
+                default:
+                    System.out.println("Opción inválida");
+            }
+
+            System.out.println();
+        }
+    }
+}
